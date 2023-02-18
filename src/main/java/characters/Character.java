@@ -122,31 +122,32 @@ public abstract class Character implements PrimaryState {
     // Key is armor slot and the value is armor
     public void equipArmor(String key, Armor armor) throws InvalidArmorException {
         boolean cantUse = true;
-        for (String str: getAvailableArmor()){
-            if (str.equals(armor.getArmorType())){
+        for (String str : getAvailableArmor()) {
+            if (str.equals(armor.getArmorType())) {
                 cantUse = false;
             }
         }
-        if(cantUse){
-            throw new InvalidArmorException("You cant use this type (" + armor.getArmorType()+") of armor");
-        } else if (armor.getRequiredLevel()>getLevel()) {
+        if (cantUse) {
+            throw new InvalidArmorException("You cant use this type (" + armor.getArmorType() + ") of armor");
+        } else if (armor.getRequiredLevel() > getLevel()) {
             throw new InvalidArmorException("You cant use this armor in your current level");
         } else {
             setItems(key, armor);
         }
     }
+
     // Check if the level and weapon type requirements are met when equipping a weapon
     // Key is the weapons slot and value is weapon
     public void equipWeapon(String key, Weapon weapon) throws InvalidWeaponException {
         boolean cantUse = true;
-        for (String str: getAvailableWeapon()){
-            if (str.equals(weapon.getWeaponType())){
+        for (String str : getAvailableWeapon()) {
+            if (str.equals(weapon.getWeaponType())) {
                 cantUse = false;
             }
         }
-        if(cantUse){
-            throw new InvalidWeaponException("You cant use this type("+weapon.getWeaponType()+") of weapons");
-        } else if (weapon.getRequiredLevel()>getLevel()) {
+        if (cantUse) {
+            throw new InvalidWeaponException("You cant use this type(" + weapon.getWeaponType() + ") of weapons");
+        } else if (weapon.getRequiredLevel() > getLevel()) {
             throw new InvalidWeaponException("You cant use this weapon in your current level");
         } else {
             setItems(key, weapon);
@@ -164,8 +165,8 @@ public abstract class Character implements PrimaryState {
         int intelligence = getTotalState().get(2);  // Characters total intelligence
         double DamagePerSpeed = 1;                       // Weapon Damage, if no weapon then 1
         // Loop through armors equipped and add their State to previously declared dexterity,strength,intelligence
-        for (String item : itemsCurrentlyEquipped.keySet()){
-            if (itemsCurrentlyEquipped.get(item).getSlot() != "Weapon"){
+        for (String item : itemsCurrentlyEquipped.keySet()) {
+            if (itemsCurrentlyEquipped.get(item).getSlot() != "Weapon") {
                 Armor armor = (Armor) itemsCurrentlyEquipped.get(item);
                 dexterity += armor.getDexterity();
                 strength += armor.getStrength();
@@ -176,12 +177,59 @@ public abstract class Character implements PrimaryState {
             }
         }
         // Calculate character Damage from primary stat and weapon Damage
-        if (characterPrimaryStat == "Dexterity"){
-            return DamagePerSpeed * (1+dexterity/100.0);
+        if (characterPrimaryStat == "Dexterity") {
+            return DamagePerSpeed * (1 + dexterity / 100.0);
         } else if (characterPrimaryStat == "Strength") {
-            return DamagePerSpeed * (1+strength/100.0);
-        }else {
-            return DamagePerSpeed * (1+intelligence/100.0);
+            return DamagePerSpeed * (1 + strength / 100.0);
+        } else {
+            return DamagePerSpeed * (1 + intelligence / 100.0);
         }
+    }
+
+    public StringBuilder displayCharacterStatistics(){
+        Map<String, BaseItem> itemsCurrentlyEquipped = getItems();
+        String characterPrimaryStat = getClassPrimaryState();
+        int dexterity = getTotalState().get(0);     // Character total dexterity
+        int strength = getTotalState().get(1);      // Character total strength
+        int intelligence = getTotalState().get(2);  // Character total intelligence
+        double DamagePerSpeed = 1;                   // Weapon Damage, if there is no weapon then the value 1
+        double characterDamage;
+        // Loop through armors equipped and add their State to previously declared dexterity,strength,intelligence
+        for (String item : itemsCurrentlyEquipped.keySet()){
+            if (itemsCurrentlyEquipped.get(item).getSlot() != "Weapon"){
+                Armor armor = (Armor) itemsCurrentlyEquipped.get(item);
+                dexterity += armor.getDexterity();
+                strength += armor.getStrength();
+                intelligence += armor.getIntelligence();
+            } else if (itemsCurrentlyEquipped.get(item).getSlot() == "Weapon") {
+                Weapon weapon = (Weapon) itemsCurrentlyEquipped.get(item);
+                DamagePerSpeed= weapon.getDamagePerSpeed();
+            }
+        }
+        // Calculate character Damage from primary stat and weapon Damage
+        if (characterPrimaryStat == "Dexterity"){
+            characterDamage = DamagePerSpeed * (1+dexterity/100.0);
+        } else if (characterPrimaryStat == "Strength") {
+            characterDamage = DamagePerSpeed * (1+strength/100.0);
+        }else {
+            characterDamage = DamagePerSpeed * (1+intelligence/100.0);
+        }
+        // Create a sheet containing characters statistics with string builder
+        StringBuilder builder = new StringBuilder();
+        builder.append("[----- Hero State -----]\n");
+        builder.append("Name:           ");
+        builder.append(getName()+"\n");
+        builder.append("Level:          ");
+        builder.append(getLevel()+"\n");
+        builder.append("Dexterity:      ");
+        builder.append(dexterity+"\n");
+        builder.append("Strength:       ");
+        builder.append(strength+"\n");
+        builder.append("Intelligence:   ");
+        builder.append(intelligence+"\n");
+        builder.append("Damage:            ");
+        builder.append(characterDamage+"\n");
+        builder.append("[--------------------]\n");
+        return builder;
     }
 }
