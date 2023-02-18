@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import equipmentsItems.BaseItem;
+import exceptions.InvalidWeaponException;
+import exceptions.InvalidArmorException;
 
 public abstract class Character implements PrimaryState {
     private String name;
@@ -112,5 +114,40 @@ public abstract class Character implements PrimaryState {
         total.add(getPrimaryStrength() + getLevelStrength());
         total.add(getPrimaryIntelligence() + getLevelIntelligence());
         return total;
+    }
+
+    // Check if armor type and level requirements are met when equipping an armor
+    // Key is armor slot and the value is armor
+    public void equipArmor(String key, Armor armor) throws InvalidArmorException {
+        boolean cantUse = true;
+        for (String str: getAvailableArmor()){
+            if (str.equals(armor.getArmorType())){
+                cantUse = false;
+            }
+        }
+        if(cantUse){
+            throw new InvalidArmorException("You cant use this type (" + armor.getArmorType()+") of armor");
+        } else if (armor.getRequiredLevel()>getLevel()) {
+            throw new InvalidArmorException("You cant use this armor in your current level");
+        } else {
+            setItems(key, armor);
+        }
+    }
+    // Check if the level and weapon type requirements are met when equipping a weapon
+    // Key is the weapons slot and value is weapon
+    public void equipWeapon(String key, Weapon weapon) throws InvalidWeaponException {
+        boolean cantUse = true;
+        for (String str: getAvailableWeapon()){
+            if (str.equals(weapon.getWeaponType())){
+                cantUse = false;
+            }
+        }
+        if(cantUse){
+            throw new InvalidWeaponException("You cant use this type("+weapon.getWeaponType()+") of weapons");
+        } else if (weapon.getRequiredLevel()>getLevel()) {
+            throw new InvalidWeaponException("You cant use this weapon in your current level");
+        } else {
+            setItems(key, weapon);
+        }
     }
 }

@@ -1,22 +1,29 @@
 package equipmentsItems;
-
-public class BaseItem {
-    private String Name;
+public abstract class BaseItem {
+    private String name;
     private int RequiredLevel;
-    private String Slot;
+    private String slot;
 
-    public BaseItem(String Name, int RequiredLevel, String Slot) {
-        this.Name = Name;       // The Name of the item
-        this.RequiredLevel = RequiredLevel;   // the required Level to equip
-        this.Slot = Slot;       //Each item is equipped in a specific Slot e.g., Weapon, Chest, Legs, Head
+    public BaseItem(String name, int RequiredLevel, String slot) {
+        this.name = name;       //Name of the equipment
+        this.RequiredLevel = RequiredLevel;   // the required level  to equip
+        this.slot = slot;       // item slot such as Weapon, Chest, Legs, Head
     }
     public String getName() {
-        return Name;
+        return name;
     }
     public int getRequiredLevel() {
         return RequiredLevel;
     }
     public String getSlot() {
-        return Slot;
+        return slot;
+    }
+    @Override
+    public String toString() {
+        return "PrimaryItem{" +
+                "name='" + name + '\'' +
+                ", RequiredLevel=" + RequiredLevel +
+                ", slot='" + slot + '\'' +
+                '}';
     }
 }
