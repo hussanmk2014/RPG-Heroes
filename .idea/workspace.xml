@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2e3d27-aefc-439e-ade3-6cdb2627942a" name="Changes" comment="feat: add calcolateDamage function">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/characters/Character.java" afterDir="false" />
+    <list default="true" id="5b2e3d27-aefc-439e-ade3-6cdb2627942a" name="Changes" comment="feat: add toString function to display characters state">
+      <change afterPath="$PROJECT_DIR$/src/main/java/menus/EquipItemsMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/menus/MainMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/menus/characterCreationMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +74,7 @@
       <workItem from="1676220900409" duration="644000" />
       <workItem from="1676277249052" duration="10141000" />
       <workItem from="1676559137301" duration="1236000" />
-      <workItem from="1676667188569" duration="4242000" />
+      <workItem from="1676667188569" duration="4989000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add exceptions classes">
       <created>1676721755044</created>
@@ -96,7 +97,28 @@
       <option name="project" value="LOCAL" />
       <updated>1676722683855</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: add display Character Statistics function">
+      <created>1676722849011</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1676722849011</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: add equipment interface">
+      <created>1676722962602</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676722962602</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: add toString function to display characters state">
+      <created>1676723171454</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1676723171454</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +139,9 @@
     <MESSAGE value="feat: add exceptions classes" />
     <MESSAGE value="feat: add equipments functions" />
     <MESSAGE value="feat: add calcolateDamage function" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add calcolateDamage function" />
+    <MESSAGE value="feat: add display Character Statistics function" />
+    <MESSAGE value="feat: add equipment interface" />
+    <MESSAGE value="feat: add toString function to display characters state" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add toString function to display characters state" />
   </component>
 </project>
