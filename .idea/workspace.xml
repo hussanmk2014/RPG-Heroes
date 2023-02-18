@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2e3d27-aefc-439e-ade3-6cdb2627942a" name="Changes" comment="feat: add Main menu to the main class">
-      <change afterPath="$PROJECT_DIR$/src/test/java/characters/CharacterTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/equipmentsItems/BaseItemTest.java" afterDir="false" />
+    <list default="true" id="5b2e3d27-aefc-439e-ade3-6cdb2627942a" name="Changes" comment="test: add test to the functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +87,7 @@
       <workItem from="1676220900409" duration="644000" />
       <workItem from="1676277249052" duration="10141000" />
       <workItem from="1676559137301" duration="1236000" />
-      <workItem from="1676667188569" duration="6915000" />
+      <workItem from="1676667188569" duration="8566000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add exceptions classes">
       <created>1676721755044</created>
@@ -161,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676723887037</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="test: add test to the functions">
+      <created>1676725731349</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1676725731349</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +194,7 @@
     <MESSAGE value="feat: add equipment menu" />
     <MESSAGE value="feat: add Main menu to the game" />
     <MESSAGE value="feat: add Main menu to the main class" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add Main menu to the main class" />
+    <MESSAGE value="test: add test to the functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="test: add test to the functions" />
   </component>
 </project>
