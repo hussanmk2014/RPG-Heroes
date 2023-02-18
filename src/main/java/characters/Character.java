@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import equipmentsItems.BaseItem;
+import equipmentsItems.armor.Armor;
+import equipmentsItems.weapon.Weapon;
 import exceptions.InvalidWeaponException;
 import exceptions.InvalidArmorException;
 
@@ -148,6 +150,38 @@ public abstract class Character implements PrimaryState {
             throw new InvalidWeaponException("You cant use this weapon in your current level");
         } else {
             setItems(key, weapon);
+        }
+    }
+
+    // Calculate character damage by calculating sum of primary State,
+    // combined with armor State and multiplied with weapon Damage
+    @Override
+    public double calculateDamage() {
+        Map<String, BaseItem> itemsCurrentlyEquipped = getItems();
+        String characterPrimaryStat = getClassPrimaryState();
+        int dexterity = getTotalState().get(0);     // Characters total dexterity
+        int strength = getTotalState().get(1);      // Characters total strength
+        int intelligence = getTotalState().get(2);  // Characters total intelligence
+        double DamagePerSpeed = 1;                       // Weapon Damage, if no weapon then 1
+        // Loop through armors equipped and add their State to previously declared dexterity,strength,intelligence
+        for (String item : itemsCurrentlyEquipped.keySet()){
+            if (itemsCurrentlyEquipped.get(item).getSlot() != "Weapon"){
+                Armor armor = (Armor) itemsCurrentlyEquipped.get(item);
+                dexterity += armor.getDexterity();
+                strength += armor.getStrength();
+                intelligence += armor.getIntelligence();
+            } else if (itemsCurrentlyEquipped.get(item).getSlot() == "Weapon") {
+                Weapon weapon = (Weapon) itemsCurrentlyEquipped.get(item);
+                DamagePerSpeed = weapon.getDamagePerSpeed();
+            }
+        }
+        // Calculate character Damage from primary stat and weapon Damage
+        if (characterPrimaryStat == "Dexterity"){
+            return DamagePerSpeed * (1+dexterity/100.0);
+        } else if (characterPrimaryStat == "Strength") {
+            return DamagePerSpeed * (1+strength/100.0);
+        }else {
+            return DamagePerSpeed * (1+intelligence/100.0);
         }
     }
 }
