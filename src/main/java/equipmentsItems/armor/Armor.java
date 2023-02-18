@@ -1,4 +1,4 @@
-package EquipmentsItems;
+package equipmentsItems.armor;
 
 public class Armor {
 }

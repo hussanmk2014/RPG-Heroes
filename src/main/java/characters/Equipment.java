@@ -1,2 +1,4 @@
-package Characters;public class Equipment {
+package characters;
+
+public class Equipment {
 }
