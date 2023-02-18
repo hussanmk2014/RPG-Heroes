@@ -16,4 +16,21 @@ public class Warrior extends Character {
                 new ArrayList<>(Arrays.asList(2, 3, 1))   //State increase per level (Dexterity,Strength,Intelligence)
         );
     }
+
+    @Override
+    public String toString() {
+        return "Warrior{" +
+                "name=" + getName()+
+                ", level=" + getLevel()+
+                ", PrimaryDexterity=" + getPrimaryDexterity() +
+                ", PrimaryStrength=" + getPrimaryStrength() +
+                ", PrimaryIntelligence=" + getPrimaryIntelligence() +
+                ", LevelDexterity=" + getLevelDexterity() +
+                ", LevelStrength=" + getLevelStrength() +
+                ", LevelIntelligence=" + getLevelIntelligence() +
+                ", armor='"+ getAvailableArmor() +  '\'' +
+                ", weapon='"+ getAvailableWeapon() +  '\'' +
+                ", equipped='" + getItems() + '\'' +
+                '}';
+    }
 }

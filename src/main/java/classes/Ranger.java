@@ -16,4 +16,21 @@ public class Ranger extends Character {
                 new ArrayList<>(Arrays.asList(5, 1, 1))   //State increase per level (Dexterity,Strength,Intelligence)
         );
     }
+
+    @Override
+    public String toString() {
+        return "Ranger{" +
+                "name=" + getName()+
+                ", level=" + getLevel()+
+                ", PrimaryDexterity=" + getPrimaryDexterity() +
+                ", PrimaryStrength=" + getPrimaryStrength() +
+                ", PrimaryIntelligence=" + getPrimaryIntelligence() +
+                ", LevelDexterity=" + getLevelDexterity() +
+                ", LevelStrength=" + getLevelStrength() +
+                ", LevelIntelligence=" + getLevelIntelligence() +
+                ", armor='"+ getAvailableArmor() +  '\'' +
+                ", weapon='"+ getAvailableWeapon() +  '\'' +
+                ", equipped='" + getItems() + '\'' +
+                '}';
+    }
 }
